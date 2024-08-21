@@ -1,0 +1,12 @@
+body {
+    filter: blur(8px);
+  }
+
+  /* Centrer le dialogue et lui ajouter une ombre légère */
+  .p-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }

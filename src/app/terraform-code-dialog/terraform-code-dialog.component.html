@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Architecture Details</h2>
+<mat-dialog-content>
+  <div class="code-container">
+    <div>Select your code type</div>
+    <select [(ngModel)]="selectedCodeType" (change)="onCodeTypeChange($event)">
+      <option value="pulumi">Pulumi</option>
+      <option value="terraform">Terraform</option>
+    </select>
+
+    <div class="code-area" *ngIf="selectedCodeType === 'pulumi'">
+      <textarea>{{ architecture.pulumiCode }}</textarea>
+    </div>
+    <div class="code-area" *ngIf="selectedCodeType === 'terraform'">
+      <textarea>{{ architecture.terraformCode }}</textarea>
+    </div>
+  </div>
+
+  <div class="cost-container form-group">
+    <pre class="pre-bold">{{ architecture.costEstimation }}</pre>
+  </div>
+
+  <mat-dialog-actions>
+    <button type="button" class="btn btn-secondary" (click)="closeDialog()">Close</button>
+  </mat-dialog-actions>
+</mat-dialog-content>

@@ -1,0 +1,46 @@
+<div class="drag-and-drop-container">
+   <!-- Sidebar avec les composants source -->
+    <ul
+      class="sidebar"
+      cdkDropList
+      #sidebarList="cdkDropList"
+      [cdkDropListData]="components"
+      [cdkDropListConnectedTo]="designSpaceList"
+      (cdkDropListDropped)="onDrop($event)"
+    >
+      <h2>Composants</h2>
+      <li *ngFor="let component of components">
+        <div class="component" cdkDrag [cdkDragData]="component">
+          {{ component.name }}
+        </div>
+      </li>
+    </ul>
+  
+    <!-- Espace de conception où les composants sont déposés -->
+    <div
+      class="design-space"
+      cdkDropList
+      #designSpaceList="cdkDropList"
+      [cdkDropListData]="placedComponents"
+      [cdkDropListConnectedTo]="sidebarList"
+      (cdkDropListDropped)="onDrop($event)"
+      style="position: relative"
+    >
+      <ng-container *ngFor="let component of placedComponents">
+        <div
+          class="component"
+          cdkDrag
+          [style.position]="'absolute'"
+          [style.left]="component.x + 'px'"
+          [style.top]="component.y + 'px'"
+          [ngClass]="{ placed: true }"
+          (cdkDragMoved)="onDragMoved($event, component)"
+          (click)="openModal(component)"
+        >
+        <img class="component-image" [src]="component.image" alt="{{ component.name }}">
+        <p>{{ component.name }}</p>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <button (click)="saveArchitecture()">Enregistrer l'architecture</button>

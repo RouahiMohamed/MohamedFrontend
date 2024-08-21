@@ -1,0 +1,11 @@
+.container-fluid {
+    height: 100%; /* Définir la hauteur maximale des conteneurs sur 100% de la hauteur de la page */
+    overflow-y: auto; /* Activer le défilement vertical lorsque le contenu dépasse la hauteur du conteneur */
+  }
+  #chart {
+    width: 100%;
+    height: 100%;
+  }
+  .card-title {
+    color: #3498db; /* Remplacez #ff0000 par la couleur souhaitée */
+}

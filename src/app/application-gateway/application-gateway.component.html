@@ -1,0 +1,102 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Add Application Gateway</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+      <h2>Create Application Gateway</h2>
+      <form [formGroup]="applicationGatewayForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" formControlName="name">
+          <div *ngIf="applicationGatewayForm.get('name')?.invalid && applicationGatewayForm.get('name')?.touched" class="text-danger">
+            Name is required
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="nameGatewayIpConfiguration">Gateway IP Configuration</label>
+          <input type="text" class="form-control" id="nameGatewayIpConfiguration" formControlName="nameGatewayIpConfiguration">
+          <div *ngIf="applicationGatewayForm.get('nameGatewayIpConfiguration')?.invalid && applicationGatewayForm.get('nameGatewayIpConfiguration')?.touched" class="text-danger">
+            Gateway IP Configuration is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="nameFrontendPort">Frontend Port</label>
+          <input type="text" class="form-control" id="nameFrontendPort" formControlName="nameFrontendPort">
+          <div *ngIf="applicationGatewayForm.get('nameFrontendPort')?.invalid && applicationGatewayForm.get('nameFrontendPort')?.touched" class="text-danger">
+            Frontend Port is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="nameFrontendIpconfiguration">Frontend IP Configuration</label>
+          <input type="text" class="form-control" id="nameFrontendIpconfiguration" formControlName="nameFrontendIpconfiguration">
+          <div *ngIf="applicationGatewayForm.get('nameFrontendIpconfiguration')?.invalid && applicationGatewayForm.get('nameFrontendIpconfiguration')?.touched" class="text-danger">
+            Frontend IP Configuration is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="nameBackendHttpSettings">Backend HTTP Settings</label>
+          <input type="text" class="form-control" id="nameBackendHttpSettings" formControlName="nameBackendHttpSettings">
+          <div *ngIf="applicationGatewayForm.get('nameBackendHttpSettings')?.invalid && applicationGatewayForm.get('nameBackendHttpSettings')?.touched" class="text-danger">
+            Backend HTTP Settings is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="nameHttpListener">HTTP Listener</label>
+          <input type="text" class="form-control" id="nameHttpListener" formControlName="nameHttpListener">
+          <div *ngIf="applicationGatewayForm.get('nameHttpListener')?.invalid && applicationGatewayForm.get('nameHttpListener')?.touched" class="text-danger">
+            HTTP Listener is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="nameRequestRoutingRule">Request Routing Rule</label>
+          <input type="text" class="form-control" id="nameRequestRoutingRule" formControlName="nameRequestRoutingRule">
+          <div *ngIf="applicationGatewayForm.get('nameRequestRoutingRule')?.invalid && applicationGatewayForm.get('nameRequestRoutingRule')?.touched" class="text-danger">
+            Request Routing Rule is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="namebackendAddressPool">Backend Address Pool</label>
+          <input type="text" class="form-control" id="namebackendAddressPool" formControlName="namebackendAddressPool">
+          <div *ngIf="applicationGatewayForm.get('namebackendAddressPool')?.invalid && applicationGatewayForm.get('namebackendAddressPool')?.touched" class="text-danger">
+            Backend Address Pool is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="region">Region</label>
+          <select class="form-control" id="region" formControlName="region">
+            <option *ngFor="let region of regions" [value]="region.id">{{ region.name }}</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="resourceGroupe">Resource Group</label>
+          <select class="form-control" id="resourceGroupe" formControlName="resourceGroupe">
+            <option *ngFor="let resourceGroup of resourceGroups" [value]="resourceGroup.id">{{ resourceGroup.name }}</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="subnet">Subnet</label>
+          <select class="form-control" id="subnet" formControlName="subnet">
+            <option *ngFor="let subnet of subnets" [value]="subnet.id">{{ subnet.name }}</option>
+          </select>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="modalRef.close()">Close</button>
+          <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

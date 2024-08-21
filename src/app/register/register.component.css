@@ -1,0 +1,12 @@
+.card-resized {
+    width: 600px;
+    height: 800px;
+    margin: 0 auto;
+  }
+  body {
+    background-image: url("../../assets/images/pexx.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    
+  }

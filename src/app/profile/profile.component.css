@@ -1,0 +1,9 @@
+.container-fluid {
+  height: 100%; /* Définir la hauteur maximale des conteneurs sur 100% de la hauteur de la page */
+  overflow-y: auto; /* Activer le défilement vertical lorsque le contenu dépasse la hauteur du conteneur */
+} 
+  .card-resized {
+    width: 650px;
+    height: 750px;
+    margin: 0 auto;
+  }

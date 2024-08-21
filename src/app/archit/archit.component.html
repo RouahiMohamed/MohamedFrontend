@@ -1,0 +1,90 @@
+
+<div class="card">
+  
+<div class="drag-and-drop-container">
+  
+  <!-- Sidebar avec les composants source -->
+  <ul
+    class="sidebar"
+    cdkDropList
+    #sidebarList="cdkDropList"
+    [cdkDropListData]="components"
+    [cdkDropListConnectedTo]="designSpaceList"
+    (cdkDropListDropped)="onDrop($event)"
+  >
+    <h5>Select your components</h5>
+    <li *ngFor="let component of components">
+      <div class="component" cdkDrag [cdkDragData]="component">
+        {{ component.name }}
+      </div>
+    </li>
+    
+    <input type="text" [(ngModel)]="architectureName" placeholder="Architecture Name" class="form-control mb-2">
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+    <button class="btn btn-primary mb-3 float-center" (click)="createArchitecture()">Create your architecture </button>
+  </ul>
+
+  <!-- Espace de conception où les composants sont déposés -->
+  <div
+    class="design-space"
+    cdkDropList
+    #designSpaceList="cdkDropList"
+    [cdkDropListData]="placedComponents"
+    [cdkDropListConnectedTo]="sidebarList"
+    (cdkDropListDropped)="onDrop($event)"
+    style="position: relative"
+  >
+  
+  <ng-container *ngFor="let component of placedComponents">
+    <div
+      class="component"
+      cdkDrag
+      [style.position]="'absolute'"
+      [style.left]="component.x + 'px'"
+      [style.top]="component.y + 'px'"
+      [ngClass]="{ placed: true }"
+      (cdkDragMoved)="onDragMoved($event, component)"
+      (click)="openModal(component)"
+    >
+      <img class="component-image" [src]="component.image" alt="{{ component.name }}">
+      <p>{{ component.name }}</p>
+      <i class="delete-icon" (click)="removeComponent(component)">&#10006;</i> <!-- This is the red cross icon -->
+    </div>
+  </ng-container>
+  
+  
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-8">
+    <div class="card-body">
+      <h5 class="card-title fw-semibold">Select the type of code</h5>
+      <select [(ngModel)]="selectedCodeType" class="form-select">
+        <option value="pulumi">Pulumi</option>
+        <option value="terraform">Terraform</option>
+      </select>
+
+      <div class="code-container" *ngIf="selectedCodeType === 'pulumi'">
+        <textarea placeholder="Code Pulumi" class="code-content" readonly>{{ pulumiCode }}</textarea>
+      </div>
+
+      <div class="code-container" *ngIf="selectedCodeType === 'terraform'">
+        <textarea placeholder="Code Terraform" class="code-content" readonly>{{ terraformCode }}</textarea>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card-body">
+      <h5 class="card-title fw-semibold">Total architecture estimate</h5>
+      <div class="cost-estimation-content">
+        <pre>{{ costEstimation | json }}</pre>
+      </div>
+      <button class="btn btn-primary mb-3 float-right" (click)="estimateCosts()">Estimate cost</button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+

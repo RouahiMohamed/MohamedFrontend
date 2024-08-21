@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AZureArchitecture</title>
+  <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../../assets/css/styles.min.css" />
+</head>
+<body>
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <div
+      class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
+      <div class="d-flex align-items-center justify-content-center w-100">
+        <div class="row justify-content-center w-100">
+          <div class="col-md-8 col-lg-6 col-xxl-3">
+            <div class="card mb-0 card-resized">
+              <div class="card-body">
+                <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
+                  <img src="../../assets/images/loo.png" width="200" alt="">
+                </a>
+                
+                <form (ngSubmit)="onSubmit()" #loginForm="ngForm" novalidate>
+                  <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="username"
+                      name="username"
+                      [(ngModel)]="form.username"
+                      required
+                      minlength="3"
+                      maxlength="20"
+                      #username="ngModel"
+                      [ngClass]="{ 'is-invalid': loginForm.submitted && username.errors }"
+                    />
+                    <div *ngIf="username.errors && loginForm.submitted" class="invalid-feedback">
+                      <div *ngIf="username.errors['required']">Username is required</div>
+                     
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="password"
+                      name="password"
+                      [(ngModel)]="form.password"
+                      required
+                      minlength="6"
+                      #password="ngModel"
+                      [ngClass]="{ 'is-invalid': loginForm.submitted && password.errors }"
+                    />
+                    <div *ngIf="password.errors && loginForm.submitted" class="invalid-feedback">
+                      <div *ngIf="password.errors['required']">Password is required</div>                    
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between mb-4">
+                    <a class="text-primary fw-bold" routerLink="/forgot">Forgot Password ?</a>
+                  </div>
+                  <button type="submit" class="btn btn-primary w-100 py-2">Sign In</button>
+                 
+                  <div class="d-flex align-items-center justify-content-center mt-3">
+                    <p class="fs-4 mb-0 fw-bold">New to Azure Architecture ?</p>
+                    <a class="text-primary fw-bold ms-2" href="./register">Create an account</a>
+                  </div>
+                </form>
+                <!-- Message d'erreur -->
+                <div *ngIf="isLoginFailed && errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

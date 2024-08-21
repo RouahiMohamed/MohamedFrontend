@@ -1,0 +1,39 @@
+
+  <h2 mat-dialog-title>Modifier l'image</h2>
+  <mat-dialog-content>
+    <form (ngSubmit)="updateImage()">
+      <div class="form-group">
+        <label for="architecture">Architecture:</label>
+        <input type="text" class="form-control" id="architecture" [(ngModel)]="image.architecture" name="architecture">
+      </div>
+      <div class="form-group">
+        <label for="offer">Offer:</label>
+        <input type="text" class="form-control" id="offer" [(ngModel)]="image.offer" name="offer">
+      </div>
+      <div class="form-group">
+        <label for="publisher">Publisher:</label>
+        <input type="text" class="form-control" id="publisher" [(ngModel)]="image.publisher" name="publisher">
+      </div>
+      <div class="form-group">
+        <label for="sku">SKU:</label>
+        <input type="text" class="form-control" id="sku" [(ngModel)]="image.sku" name="sku">
+      </div>
+      <div class="form-group">
+        <label for="urn">URN:</label>
+        <input type="text" class="form-control" id="urn" [(ngModel)]="image.urn" name="urn">
+      </div>
+      <div class="form-group">
+        <label for="urnAlias">URN Alias:</label>
+        <input type="text" class="form-control" id="urnAlias" [(ngModel)]="image.urnAlias" name="urnAlias">
+      </div>
+      <div class="form-group">
+        <label for="version">Version:</label>
+        <input type="text" class="form-control" id="version" [(ngModel)]="image.version" name="version">
+      </div>
+      <div class="dialog-actions">
+      <button type="submit" class="btn btn-primary">Modifier</button>
+      <button type="button" class="btn btn-secondary" (click)="closeDialog()">Fermer</button>
+    </div>
+    </form>
+  </mat-dialog-content>
+  

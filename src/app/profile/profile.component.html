@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="../../assets/css/styles.min.css" />
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+<div class="container-fluid" *ngIf="currentUser">
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title fw-semibold mb-4">{{ currentUser.username }} Profil</h5>
+        
+        <!-- Profile details -->
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Username</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="currentUser.username" readonly>
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="currentUser.email" readonly>
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+       
+        
+        <!-- Button to toggle password form -->
+        <button class="btn btn-primary mb-3" (click)="togglePasswordForm()">Update password</button>
+
+        <!-- Password form -->
+        <div *ngIf="showPasswordForm">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Update password</h5>
+              <form (submit)="updatePassword()">
+                <div class="mb-3">
+                  <label for="currentPassword" class="form-label">Current password</label>
+                  <input type="password" class="form-control" id="currentPassword" name="currentPassword" [(ngModel)]="passwordForm.currentPassword" required>
+                </div>
+                <div class="mb-3">
+                  <label for="newPassword" class="form-label">New password:</label>
+                  <input type="password" class="form-control" id="newPassword" name="newPassword" [(ngModel)]="passwordForm.newPassword" required>
+                </div>
+                <div class="mb-3">
+                  <label for="confirmPassword" class="form-label">Confirm password</label>
+                  <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" [(ngModel)]="passwordForm.confirmPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Success alert -->
+        <div *ngIf="message" class="alert alert-success" role="alert">
+          Password updated successfully!
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+

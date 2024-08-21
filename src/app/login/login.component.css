@@ -1,0 +1,12 @@
+.card-resized {
+    width: 500px;
+    height: 750px;
+    margin: 0 auto;
+  }
+  body {
+    background-image: url("../../assets/images/per.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    
+  }

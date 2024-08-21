@@ -1,0 +1,16 @@
+.welcome-message {
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #3498db; /* Couleur bleue */
+    text-align: center;
+    margin-top: 10px;
+}
+
+.sub-message {
+    font-size: 14px;
+    color: #777; /* Couleur grise */
+}
+.hide-menu {
+    color: #3498db; /* Change la couleur du texte en bleu */
+}

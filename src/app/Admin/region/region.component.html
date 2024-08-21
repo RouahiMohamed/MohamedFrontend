@@ -1,0 +1,72 @@
+
+<div class="container">
+    <h2>List of Regions</h2>
+  
+    <div class="row justify-content-between">
+      <div class="col-auto">
+        <div class="form-group">
+          <input 
+            type="text" 
+            class="form-control form-control-sm" 
+            id="regionFilter" 
+            [(ngModel)]="regionFilter" 
+            (keyup)="applyFilter()" 
+            placeholder="Filter by Region Name"
+          >
+        </div>
+      </div>
+      <div class="col-auto">
+        <button class="btn btn-primary" (click)="openAddRegionDialog()">Add Region</button>
+     
+        
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col">
+        <div class="table-responsive">
+          <table class="table modern-table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Display Name</th>
+                <th scope="col">Name</th>
+                <th scope="col">Regional Display Name</th>
+                <th scope="col">Actions</th> <!-- New column for actions -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let region of pagedRegions">
+                <td>{{ region.displayName }}</td>
+                <td>{{ region.name }}</td>
+                <td>{{ region.regionalDisplayName }}</td>
+                <td>
+                  <!-- Actions Column -->
+                  <button class="btn btn-danger" (click)="deleteRegion(region.id)"><span>
+                    <i class="ti ti-trash"></i>
+      
+                  </span></button>
+                  &nbsp;
+                 
+                 <button class="btn btn-primary" (click)="openUpdateRegionDialog(region)"><span>
+                  <i class="ti ti-settings"></i>
+    
+                </span></button>
+
+                  
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row justify-content-center">
+      <div class="col-auto">
+        <mat-paginator [pageSize]="pageSize" [pageIndex]="pageIndex" [length]="regions.length"
+                       (page)="onPageChange($event)">
+        </mat-paginator>
+      </div>
+    </div>
+  </div>
+  

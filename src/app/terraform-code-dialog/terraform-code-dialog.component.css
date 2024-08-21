@@ -1,0 +1,104 @@
+.custom-dialog-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.mat-dialog-container {
+  border-radius: 8px; /* Coins arrondis */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Ombre */
+  padding: 16px; /* Espacement interne */
+}
+
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Augmenter l'espace entre les éléments */
+}
+
+.dialog-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.dialog-item span {
+  font-size: 1rem;
+}
+
+.mat-dialog-title {
+  font-size: 1.5rem; /* Taille de la police */
+  font-weight: bold; /* Style de police */
+  text-align: center; /* Centrer le titre */
+  color: #007bff; /* Couleur bleue */
+}
+
+.mat-dialog-content {
+  padding: 16px 0; /* Espacement interne */
+}
+
+.mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end; /* Aligner les boutons à droite */
+  padding: 16px 0 0; /* Espacement interne */
+}
+
+button.mat-raised-button {
+  background-color: #3f51b5; /* Couleur de fond */
+  color: white; /* Couleur du texte */
+  margin-left: 8px; /* Espacement entre les boutons */
+}
+
+button.mat-raised-button:hover {
+  background-color: #303f9f; /* Couleur de fond au survol */
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px; /* Espace entre les boutons */
+  padding-top: 10px; /* Espacement en haut des boutons */
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.code-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.code-area {
+  display: flex;
+  flex-direction: column;
+}
+
+textarea {
+  width: 100%;
+  height: 200px; /* Vous pouvez ajuster cette hauteur */
+  padding: 8px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background: #f9f9f9;
+  resize: vertical;
+}
+
+.pre-bold {
+  font-weight: bold;
+}
+
+.cost-container {
+  margin-top: 16px; /* Ajouter de l'espace entre le conteneur de code et le coût */
+}

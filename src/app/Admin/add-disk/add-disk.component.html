@@ -1,0 +1,51 @@
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add disk</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <h2>Ajouter une taille de disque</h2>
+          <form (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" class="form-control" id="name" [(ngModel)]="diskSize.name" name="name">
+            </div>
+            <div class="form-group">
+              <label for="maxDataDiskCount">Max Data Disk Count:</label>
+              <input type="number" class="form-control" id="maxDataDiskCount" [(ngModel)]="diskSize.maxDataDiskCount" name="maxDataDiskCount">
+            </div>
+            <div class="form-group">
+              <label for="idRegion">Region:</label>
+              <select class="form-control" id="idRegion" [(ngModel)]="diskSize.idRegion" name="idRegion">
+                <option *ngFor="let region of regions" [value]="region.id">{{ region.name }}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="memoryInMB">Memory (MB):</label>
+              <input type="number" class="form-control" id="memoryInMB" [(ngModel)]="diskSize.memoryInMB" name="memoryInMB">
+            </div>
+            <div class="form-group">
+              <label for="numberOfCores">Number of Cores:</label>
+              <input type="number" class="form-control" id="numberOfCores" [(ngModel)]="diskSize.numberOfCores" name="numberOfCores">
+            </div>
+            <div class="form-group">
+              <label for="osDiskSizeInMB">OS Disk Size (MB):</label>
+              <input type="number" class="form-control" id="osDiskSizeInMB" [(ngModel)]="diskSize.osDiskSizeInMB" name="osDiskSizeInMB">
+            </div>
+            <div class="form-group">
+              <label for="resourceDiskSizeInMB">Resource Disk Size (MB):</label>
+              <input type="number" class="form-control" id="resourceDiskSizeInMB" [(ngModel)]="diskSize.resourceDiskSizeInMB" name="resourceDiskSizeInMB">
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- Le bouton "Save changes" a été déplacé dans le pied de page -->
+      <div class="modal-footer">
+      
+        <button type="button" class="btn btn-secondary" (click)="modalRef.close()">Close</button>
+        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Add</button>
+      </div>
+    </div>
+

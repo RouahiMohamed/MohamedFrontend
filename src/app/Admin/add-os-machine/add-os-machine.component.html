@@ -1,0 +1,49 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Add operating system</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="dialogRef.close()"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+  
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="architecture">Architecture:</label>
+        <input type="text" class="form-control" id="architecture" [(ngModel)]="image.architecture" name="architecture">
+      </div>
+      <div class="form-group">
+        <label for="offer">Offer:</label>
+        <input type="text" class="form-control" id="offer" [(ngModel)]="image.offer" name="offer">
+      </div>
+      <div class="form-group">
+        <label for="publisher">Publisher:</label>
+        <input type="text" class="form-control" id="publisher" [(ngModel)]="image.publisher" name="publisher">
+      </div>
+      <div class="form-group">
+        <label for="sku">SKU:</label>
+        <input type="text" class="form-control" id="sku" [(ngModel)]="image.sku" name="sku">
+      </div>
+      <div class="form-group">
+        <label for="urn">URN:</label>
+        <input type="text" class="form-control" id="urn" [(ngModel)]="image.urn" name="urn">
+      </div>
+      <div class="form-group">
+        <label for="urnAlias">URN Alias:</label>
+        <input type="text" class="form-control" id="urnAlias" [(ngModel)]="image.urnAlias" name="urnAlias">
+      </div>
+      <div class="form-group">
+        <label for="version">Version:</label>
+        <input type="text" class="form-control" id="version" [(ngModel)]="image.version" name="version">
+      </div>
+      
+
+    </form>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="dialogRef.close()">Close</button>
+  <button type="submit" class="btn btn-primary" (click)="onSubmit()">Add</button>
+
+</div>
+</div>
+  

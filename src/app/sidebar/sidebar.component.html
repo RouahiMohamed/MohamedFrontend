@@ -1,0 +1,14 @@
+<div class="sidebar">
+    <h3>Sidebar</h3>
+    <div cdkDropList #list="cdkDropList" [cdkDropListData]="items" [cdkDropListConnectedTo]="[dropzone]"
+         (cdkDropListDropped)="drop($event)">
+      <div class="item" *ngFor="let item of items" cdkDrag>{{ item }}</div>
+    </div>
+  </div>
+  
+  <div class="dropzone" cdkDropList #dropzone="cdkDropList" [cdkDropListData]="droppedItems" 
+       [cdkDropListConnectedTo]="[list]" (cdkDropListDropped)="drop($event)">
+    <p>Drop zone</p>
+    <div *ngFor="let item of droppedItems" cdkDrag>{{ item }}</div>
+  </div>
+  

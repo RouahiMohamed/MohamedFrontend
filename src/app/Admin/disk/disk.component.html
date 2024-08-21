@@ -1,0 +1,67 @@
+<div class="container">
+  <h2>Disk list</h2>
+
+  <div class="row justify-content-between mb-3">
+    <div class="col-auto">
+      <input 
+        type="text" 
+        class="form-control form-control-sm" 
+        id="regionFilter" 
+        [(ngModel)]="regionFilter" 
+        (keyup)="applyFilter()" 
+        placeholder="Filter by name"
+      >
+    </div>
+    <div class="col-auto">
+      <button class="btn btn-primary" (click)="openModal()">Add disk</button>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table modern-table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Max Data Disk Count</th>
+          <th scope="col">Region</th>
+          <th scope="col">Memory (MB)</th>              
+          <th scope="col">Number of Cores</th>
+          <th scope="col">OS Disk Size (MB)</th>
+          <th scope="col">Resource Disk Size (MB)</th>
+          <th scope="col">Actions</th> 
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let diskSize of pagedDiskSizes">
+          <td>{{ diskSize.name }}</td>
+          <td>{{ diskSize.maxDataDiskCount }}</td>
+          <td>{{ diskSize.regionName }}</td>
+          <td>{{ diskSize.memoryInMB }}</td>
+          <td>{{ diskSize.numberOfCores }}</td>
+          <td>{{ diskSize.osDiskSizeInMB }}</td>
+          <td>{{ diskSize.resourceDiskSizeInMB }}</td>
+          <td >             
+            <button class="btn btn-danger" (click)="deleteDiskSize(diskSize.id)"><span>
+              <i class="ti ti-trash"></i>
+
+            </span></button>
+            &nbsp;
+
+            <button class="btn btn-primary" (click)="openUpdateDiskSizeDialog(diskSize)"><span>
+              <i class="ti ti-settings"></i>
+
+            </span></button>
+          </td>             
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-auto">
+      <mat-paginator [pageSize]="pageSize" [pageIndex]="pageIndex" [length]="diskSizes.length"
+                     (page)="onPageChange($event)">
+      </mat-paginator>
+    </div>
+  </div>
+</div>

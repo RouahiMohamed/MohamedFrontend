@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>Modifier la taille du disque</h2>
+<mat-dialog-content>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" id="name" [(ngModel)]="updatedDiskSize.name" name="name">
+    </div>
+    <div class="form-group">
+      <label for="maxDataDiskCount">Max Data Disk Count:</label>
+      <input type="number" class="form-control" id="maxDataDiskCount" [(ngModel)]="updatedDiskSize.maxDataDiskCount" name="maxDataDiskCount">
+    </div>
+    <div class="form-group">
+      <label for="idRegion">Region:</label>
+      <select class="form-control" id="idRegion" [(ngModel)]="updatedDiskSize.idRegion" name="idRegion">
+        <option *ngFor="let region of regions" [value]="region.id">{{ region.name }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="memoryInMB">Memory (MB):</label>
+      <input type="number" class="form-control" id="memoryInMB" [(ngModel)]="updatedDiskSize.memoryInMB" name="memoryInMB">
+    </div>
+    <div class="form-group">
+      <label for="numberOfCores">Number of Cores:</label>
+      <input type="number" class="form-control" id="numberOfCores" [(ngModel)]="updatedDiskSize.numberOfCores" name="numberOfCores">
+    </div>
+    <div class="form-group">
+      <label for="osDiskSizeInMB">OS Disk Size (MB):</label>
+      <input type="number" class="form-control" id="osDiskSizeInMB" [(ngModel)]="updatedDiskSize.osDiskSizeInMB" name="osDiskSizeInMB">
+    </div>
+    <div class="form-group">
+      <label for="resourceDiskSizeInMB">Resource Disk Size (MB):</label>
+      <input type="number" class="form-control" id="resourceDiskSizeInMB" [(ngModel)]="updatedDiskSize.resourceDiskSizeInMB" name="resourceDiskSizeInMB">
+    </div>
+    <div class="dialog-actions">
+      <button type="button" class="btn btn-secondary" (click)="closeDialog()">Fermer</button>
+      <button type="submit" class="btn btn-primary">Modifier</button>
+    </div>
+  </form>
+</mat-dialog-content>

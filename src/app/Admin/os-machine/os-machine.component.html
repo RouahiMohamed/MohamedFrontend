@@ -1,0 +1,72 @@
+<div class="container">
+  <h2>Operating system List</h2>
+
+  <div class="row justify-content-between">
+    <div class="col-auto">
+      <div class="form-group">
+        <input 
+          type="text" 
+          class="form-control form-control-sm" 
+          id="offerFilter" 
+          [(ngModel)]="offerFilter" 
+          (keyup)="applyFilter()" 
+          placeholder="Filter by Offer"
+        >
+      </div>
+    </div>
+    <div class="col-auto">
+      <button class="btn btn-primary" (click)="openAddImageDialog()">Add image</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="table-responsive" >
+        <table class="table text-nowrap mb-0 align-middle">
+          <thead class="thead-dark fs-4">
+            <tr>
+              <th scope="col">Architecture</th>
+              <th scope="col">Offer</th>
+              <th scope="col">Publisher</th>
+              <th scope="col">SKU</th>
+              <th scope="col">URN</th>
+              <th scope="col">URN Alias</th>
+              <th scope="col">Version</th>
+              <th scope="col">Actions</th> 
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let image of pagedImages">
+              <td>{{ image.architecture }}</td>
+              <td>{{ image.offer }}</td>
+              <td>{{ image.publisher }}</td>
+              <td>{{ image.sku }}</td>
+              <td>{{ image.urn }}</td>
+              <td>{{ image.urnAlias }}</td>
+              <td>{{ image.version }}</td>
+              <td width="50px">             
+                <button class="btn btn-danger"  (click)="deleteImage(image.id)"><span>
+                  <i class="ti ti-trash"></i>
+    
+                </span></button>
+                &nbsp;
+                <button class="btn btn-primary" (click)="openUpdateImageDialog(image)"><span>
+                  <i class="ti ti-settings"></i>
+    
+                </span></button>
+              </td>             
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-auto">
+      <mat-paginator [pageSize]="pageSize" [pageIndex]="pageIndex" [length]="images.length"
+                     (page)="onPageChange($event)">
+      </mat-paginator>
+    </div>
+  </div>
+</div>

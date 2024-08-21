@@ -1,0 +1,41 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Add Vmss</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
+      </div>
+      <div class="modal-body">
+<div class="container">
+    <h2>Créer VMSS</h2>
+    <form [formGroup]="VmssForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Nom:</label>
+        <input type="text" formControlName="name" class="form-control" id="name" placeholder="Entrez le nom" [ngClass]="{ 'is-invalid': VmssForm.get('name')?.invalid && VmssForm.get('name')?.touched }">
+        <div *ngIf="VmssForm.get('name')?.invalid && VmssForm.get('name')?.touched" class="invalid-feedback">
+          Le nom est requis.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="nb_vm">Nombre de VM:</label>
+        <input type="number" formControlName="nb_vm" class="form-control" id="nb_vm" placeholder="Entrez le nombre de VM" [ngClass]="{ 'is-invalid': VmssForm.get('nb_vm')?.invalid && VmssForm.get('nb_vm')?.touched }">
+        <div *ngIf="VmssForm.get('nb_vm')?.invalid && VmssForm.get('nb_vm')?.touched" class="invalid-feedback">
+          Le nombre de VM est requis.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="virtualMachine">Machine Virtuelle:</label>
+        <select formControlName="virtualMachine" class="form-control" id="virtualMachine" [ngClass]="{ 'is-invalid': VmssForm.get('virtualMachine')?.invalid && VmssForm.get('virtualMachine')?.touched }">
+          <option value="">Sélectionnez une machine virtuelle</option>
+          <option *ngFor="let vm of virtualMachines" [value]="vm.id">{{ vm.name }}</option>
+        </select>
+       
+      </div>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+   
+    <button type="button" class="btn btn-secondary" (click)="modalRef.close()">Close</button>
+    <button type="submit" class="btn btn-primary" (click)="onSubmit()">Add</button>
+  </div>
+  </div>
+  
